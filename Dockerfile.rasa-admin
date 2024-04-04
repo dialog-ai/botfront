@@ -1,0 +1,33 @@
+FROM node:14.17-buster
+
+RUN apt-get update
+RUN apt-get install dos2unix -y
+
+ENV METEOR_ALLOW_SUPERUSER=true
+ENV ROOT_URL="http://localhost:3000"
+
+RUN curl https://install.meteor.com/ | sh
+
+WORKDIR /code
+
+COPY ./botfront/package.json package.json
+COPY ./botfront/package-lock.json package-lock.json
+COPY ./botfront/.meteor/release .meteor/release
+COPY ./botfront/.meteor/platforms .meteor/platforms
+COPY ./botfront/.meteor/packages .meteor/packages
+COPY ./botfront/.meteor/versions .meteor/versions
+
+COPY ./botfront/postinstall.sh postinstall.sh
+
+RUN meteor npm install
+RUN meteor --get-ready
+
+COPY ./botfront .
+
+RUN dos2unix ./postinstall.sh
+
+RUN chmod -R 700 /code/.meteor/local
+
+EXPOSE 3000
+
+CMD ["meteor", "--settings", "/code/private/env/production/settings.json", "--exclude-archs", "web.browser.legacy" ]

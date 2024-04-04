@@ -6,7 +6,7 @@
 version: "3.0"
 services:
   botfront:
-    image: botfront/botfront
+    image: dialog-ai/botfront
     container_name: botfront-app
     restart: always
     networks: ['botfront-network']

@@ -253,14 +253,12 @@ export async function updateEnvFile(projectAbsPath) {
         envFileContent += `${variable.toUpperCase()}=${config.env[variable]}\n`;
     });
     Object.keys(config.images.default).forEach((variable) => {
-        envFileContent += `IMAGES_DEFAULT_${variable.toUpperCase().replace('-', '_')}=${
-            config.images.default[variable]
-        }\n`;
+        envFileContent += `IMAGES_DEFAULT_${variable.toUpperCase().replace('-', '_')}=${config.images.default[variable]
+            }\n`;
     });
     Object.keys(config.images.current).forEach((variable) => {
-        envFileContent += `IMAGES_CURRENT_${variable.toUpperCase().replace('-', '_')}=${
-            config.images.current[variable]
-        }\n`;
+        envFileContent += `IMAGES_CURRENT_${variable.toUpperCase().replace('-', '_')}=${config.images.current[variable]
+            }\n`;
     });
 
     fs.writeFileSync(getProjectEnvFilePath(projectAbsPath), envFileContent);

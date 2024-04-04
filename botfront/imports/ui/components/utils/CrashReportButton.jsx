@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 const { version } = require('/package.json');
 
 // eslint-disable-next-line no-useless-concat
-const URL_WITH_BODY_TEMPLATE = 'https://github.com/botfront/botfront/issues/new?labels=bug&template=bug_report.md&body='
+const URL_WITH_BODY_TEMPLATE = 'https://github.com/dialog-ai/botfront/issues/new?labels=bug&template=bug_report.md&body='
     + `
 **Describe the bug**
 Here is the report:

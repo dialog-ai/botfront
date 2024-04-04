@@ -1,0 +1,1 @@
+docker buildx bake -f docker-bake.hcl rasa-admin

@@ -167,8 +167,8 @@ jobs:
           # Add branch- prefix for branch pushes
           [[ "${{ github.ref }}" == "refs/heads/"* ]] && VERSION=branch-$VERSION
           echo VERSION=$VERSION
-          docker tag botfront-local botfront/botfront:$VERSION
-          docker push botfront/botfront:$VERSION
+          docker tag botfront-local dialog-ai/botfront:$VERSION
+          docker push dialog-ai/botfront:$VERSION
       - run: touch empty
       - name: overwrite bf artifact with empty file
         uses: actions/upload-artifact@v1
